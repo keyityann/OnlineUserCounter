@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Test Servlet Events</title>
+    </h:head>
+    <h:body>
+        <c:if test="#{!userNameBean.isLoggedIn()}">
+            <h:form>
+                <h:inputText id="userName" title="Enter your user name:" value="#{userNameBean.userName}">
+                    <f:validateRequired />
+                </h:inputText>
+                <h:commandButton id="login" value="Login" action="#{userNameBean.login}" />
+            </h:form>
+        </c:if>
+        <c:if test="#{userNameBean.isLoggedIn()}">
+            Hi #{userNameBean.userName}, you are already logged in!
+            <br/>
+            <br/>
+            <hr/>
+            
+            <h:form>
+            <h:commandButton id="view" styleClass="button" value="View other users" action="#{userNameBean.viewLoggedInUsers}" />
+            </h:form>
+        </c:if>
+    </h:body>
+</html>
+

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Test Servlet Events</title>
+    	<h:outputStylesheet library="css" name="table-style.css"  />
+    </h:head>
+    <h:body>
+        Hi #{userNameBean.userName}, Welcome!
+        <br/>
+        <br/>
+        
+        <hr/>
+        <h:dataTable value="#{userNameBean.userList}" var="user"
+                     styleClass="userTable"
+                     headerClass="userTable-header"
+                     rowClasses="userTable-row">
+            <h:column>
+                <f:facet name="header">Session</f:facet>
+                #{user.sessionId}
+            </h:column>
+            <h:column>
+                <f:facet name="header">User Name</f:facet>
+                #{user.userName}
+            </h:column>
+        </h:dataTable>
+        <hr/>
+        
+        <br/>
+        <br/>
+        <h:form>
+        <h:commandButton id="logout" value="Click me to Logout" styleClass="button" action="#{userNameBean.logout}" />
+        </h:form>
+    </h:body>
+</html>
+
